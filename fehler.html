@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Die Seite kann nicht angezeigt werden</title>
+<style>
+body { margin: 0; padding: 28px 36px; font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif; font-size: 13px; color: #1c1c1c; background: #ffffff; }
+h1 { font-size: 18px; margin: 0 0 6px; color: #1f3a68; }
+.adresse { font-family: "Courier New", monospace; word-break: break-all; }
+hr { border: none; border-top: 1px solid #b8b3a2; margin: 16px 0; }
+ul { padding-left: 20px; line-height: 1.6; }
+.klein { color: #4d4a40; font-size: 11px; }
+</style>
+</head>
+<body>
+<h1>Die Seite kann nicht angezeigt werden</h1>
+<p>Der Server unter <span class="adresse" id="adresse">dieser Adresse</span> ist nicht erreichbar.</p>
+<hr>
+<p>Versuchen Sie Folgendes:</p>
+<ul>
+<li>Überprüfen Sie die Schreibweise der Adresse in der Adressleiste.</li>
+<li>Klicken Sie auf „Neu laden“ oder versuchen Sie es später erneut.</li>
+<li>Nutzen Sie die Einträge in der Links-Leiste.</li>
+</ul>
+<p class="klein">Keine Verbindung zum Server · SurfStar Gold</p>
+<script>
+(function () {
+  var a = new URLSearchParams(location.search).get('adresse');
+  if (a) document.getElementById('adresse').textContent = a;
+  if (new URLSearchParams(location.search).get('L') === 'en') {
+    document.documentElement.lang = 'en';
+    document.title = 'The page cannot be displayed';
+    var t = ['The page cannot be displayed', 'The server at <span class="adresse" id="adresse"></span> cannot be reached.', 'Try the following:',
+      '<li>Check the spelling of the address in the address bar.</li><li>Click “Reload” or try again later.</li><li>Use the entries in the Links bar.</li>',
+      'No connection to the server · SurfStar Gold'];
+    document.querySelector('h1').textContent = t[0];
+    var ps = document.querySelectorAll('p');
+    ps[0].innerHTML = t[1]; ps[1].textContent = t[2]; ps[2].textContent = t[4];
+    document.querySelector('ul').innerHTML = t[3];
+    document.getElementById('adresse').textContent = a || 'this address';
+  }
+})();
+</script>
+</body>
+</html>

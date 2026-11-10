@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behördensimulator – Musterstadt Spiel 1</title>
+<link rel="stylesheet" href="css/spiel.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+<div id="buehne">
+<div id="rechner">
+
+<header id="spielleiste">
+  <p class="links"><strong id="sl-zeit">Mo, 12.10.2009 · 7:30 Uhr</strong> <span id="sl-ort">Zuhause, Ahornweg 7</span></p>
+  <div class="rechts" id="sl-aktionen"><button type="button" class="knopf-dunkel" id="sl-schreiben">Schreiben lesen</button><button type="button" class="knopf-dunkel" id="sl-unterlagen">Meine Unterlagen</button><button type="button" class="knopf-dunkel" id="sl-warten">Warten …</button><button type="button" class="knopf-gold" id="sl-weg">Zum Rathaus (15 Min.)</button></div>
+</header>
+
+<main id="schreibtisch">
+  <button type="button" class="desktop-symbol" id="symbol-surfstar">
+    <svg width="40" height="40" viewBox="0 0 16 16" aria-hidden="true"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 1,6 6,6" fill="#e8b32a" stroke="#7a5a0c" stroke-width=".5"/></svg>
+    <span>SurfStar Gold</span>
+  </button>
+
+  <section id="fenster" class="fenster" aria-label="SurfStar Gold">
+    <div class="titelleiste">
+      <span class="titel"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 1,6 6,6" fill="#e8b32a" stroke="#7a5a0c" stroke-width=".6"/></svg><span id="fenster-titel">SurfStar Gold 4.7</span></span>
+      <span class="fensterknoepfe">
+        <button type="button" id="k-min" aria-label="Minimieren">_</button>
+        <button type="button" id="k-max" aria-label="Maximieren">□</button>
+        <button type="button" id="k-zu" aria-label="Schließen">×</button>
+      </span>
+    </div>
+
+    <nav class="menueleiste" aria-label="Menü">
+      <div class="menue"><button type="button" class="menuekopf" aria-expanded="false" aria-controls="m-datei">Datei</button>
+        <ul class="menueliste" id="m-datei" hidden>
+          <li><button type="button" aria-disabled="true">Neues Fenster</button></li>
+          <li><button type="button" data-aktion="drucken">Drucken …</button></li>
+          <li class="trenner" aria-hidden="true"></li>
+          <li><button type="button" data-aktion="schliessen">Schließen</button></li>
+        </ul></div>
+      <div class="menue"><button type="button" class="menuekopf" aria-expanded="false" aria-controls="m-bearbeiten">Bearbeiten</button>
+        <ul class="menueliste" id="m-bearbeiten" hidden>
+          <li><button type="button" aria-disabled="true">Ausschneiden</button></li>
+          <li><button type="button" aria-disabled="true">Kopieren</button></li>
+          <li><button type="button" aria-disabled="true">Einfügen</button></li>
+        </ul></div>
+      <div class="menue"><button type="button" class="menuekopf" aria-expanded="false" aria-controls="m-ansicht">Ansicht</button>
+        <ul class="menueliste" id="m-ansicht" hidden>
+          <li><button type="button" data-aktion="neuladen">Neu laden</button></li>
+          <li><button type="button" data-aktion="stopp">Stopp</button></li>
+        </ul></div>
+      <div class="menue"><button type="button" class="menuekopf" aria-expanded="false" aria-controls="m-favoriten">Favoriten</button>
+        <ul class="menueliste" id="m-favoriten" hidden>
+          <li><button type="button" data-ziel="stadt">Stadt Musterstadt</button></li>
+          <li><button type="button" data-ziel="kreis">Kreis Muster</button></li>
+          <li><button type="button" data-ziel="kts">KTS</button></li>
+        </ul></div>
+      <div class="menue"><button type="button" class="menuekopf" aria-expanded="false" aria-controls="m-extras">Extras</button>
+        <ul class="menueliste" id="m-extras" hidden>
+          <li><button type="button" data-aktion="optionen">Internetoptionen …</button></li>
+        </ul></div>
+      <div class="menue"><button type="button" class="menuekopf" aria-expanded="false" aria-controls="m-hilfe">?</button>
+        <ul class="menueliste" id="m-hilfe" hidden>
+          <li><button type="button" data-aktion="info">Über SurfStar Gold</button></li>
+        </ul></div>
+    </nav>
+
+    <div class="symbolleiste">
+      <button type="button" data-aktion="zurueck">◀ Zurück</button>
+      <button type="button" data-aktion="vor">Vor ▶</button>
+      <button type="button" data-aktion="stopp">Stopp</button>
+      <button type="button" data-aktion="neuladen">Neu laden</button>
+      <button type="button" data-ziel="stadt">Startseite</button>
+      <button type="button" data-aktion="drucken">Drucken</button>
+      <span class="marke">SurfStar <strong>Gold</strong></span>
+    </div>
+
+    <form class="adressleiste" id="adressform" autocomplete="off">
+      <label for="adresse">Adresse</label>
+      <input type="text" id="adresse" name="adresse" spellcheck="false" value="http://www.stadt-musterstadt.de/">
+      <button type="submit">Los</button>
+    </form>
+
+    <div class="linksleiste">
+      <span class="beschriftung">Links</span>
+      <button type="button" class="link" data-ziel="stadt">Stadt Musterstadt</button><span aria-hidden="true">·</span>
+      <button type="button" class="link" data-ziel="kreis">Kreis Muster</button><span aria-hidden="true">·</span>
+      <button type="button" class="link" data-ziel="kts">KTS</button>
+    </div>
+
+    <div class="inhalt">
+      <iframe id="seite" title="Angezeigte Internetseite" src="../musterstadt/index.html?id=1&amp;L=0"></iframe>
+    </div>
+
+    <div class="statusleiste"><span id="status" aria-live="polite">Fertig</span><span>Internet</span></div>
+  </section>
+</main>
+
+<footer id="taskleiste">
+  <div class="menue start"><button type="button" class="menuekopf" id="startknopf" aria-expanded="false" aria-controls="m-start">Menü</button>
+    <ul class="menueliste nach-oben" id="m-start" hidden>
+      <li><button type="button" data-aktion="oeffnen">SurfStar Gold</button></li>
+    </ul></div>
+  <button type="button" id="task-surfstar" class="taskknopf aktiv">SurfStar Gold</button>
+  <span id="uhr">07:30</span>
+</footer>
+
+<div id="dialog-info" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-info-titel" hidden>
+  <div class="titelleiste"><span class="titel" id="dialog-info-titel">Über SurfStar Gold</span></div>
+  <div class="dialog-inhalt">
+    <p class="gross"><svg width="32" height="32" viewBox="0 0 16 16" aria-hidden="true"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 1,6 6,6" fill="#e8b32a" stroke="#7a5a0c" stroke-width=".5"/></svg> SurfStar <strong>Gold</strong></p>
+    <p>Version 4.7 (Build 1182)<br>Verschlüsselung: 128 Bit</p>
+    <p>Lizenziert für: Privat</p>
+    <p class="rechts"><button type="button" class="dialog-ok">OK</button></p>
+  </div>
+</div>
+
+<div id="dialog-optionen" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-optionen-titel" hidden>
+  <div class="titelleiste"><span class="titel" id="dialog-optionen-titel">Internetoptionen</span></div>
+  <div class="dialog-inhalt">
+    <p>Diese Einstellungen wurden von Ihrem Systemadministrator gesperrt.</p>
+    <p class="rechts"><button type="button" class="dialog-ok">OK</button></p>
+  </div>
+</div>
+
+<section id="schirm-ausweis" class="schirm" role="dialog" aria-modal="true" aria-labelledby="aw-titel" hidden>
+  <div class="schirm-kopf">
+    <div><h1 id="aw-titel">Behördensimulator</h1><p id="aw-untertitel">Spiel 1: Antrag auf Ausstellung eines Negativattestes</p></div>
+    <p class="sprachwahl"><label><input type="checkbox" id="aw-englisch"> <span lang="en">English</span></label></p>
+  </div>
+  <div class="schirm-spalten">
+    <div class="spalte-ausweis">
+      <div class="ausweis" aria-hidden="true" data-amtlich lang="de">
+        
+        <div class="ausweis-kopf"><strong>PERSONALAUSWEIS</strong><span>Nr. ⟨wird vergeben⟩</span></div>
+        <div class="ausweis-mitte">
+          <svg class="passbild" viewBox="0 0 118 152" width="118" height="152">
+            <rect width="118" height="152" fill="#c9cdd1"/>
+            <g class="frisur hinten" data-f="2"><path class="haar" d="M22 50 Q20 120 28 140 L90 140 Q98 120 96 50 Z"/></g>
+            <g class="frisur hinten" data-f="5"><circle class="haar" cx="30" cy="70" r="16"/><circle class="haar" cx="88" cy="70" r="16"/><circle class="haar" cx="34" cy="96" r="13"/><circle class="haar" cx="84" cy="96" r="13"/></g>
+            <path d="M22 152 Q22 116 59 112 Q96 116 96 152 Z" fill="#4a5a78"/>
+            <rect class="haut" x="49" y="92" width="20" height="24"/>
+            <ellipse class="haut" cx="59" cy="68" rx="28" ry="34"/>
+            <g class="frisur" data-f="0"><path class="haar" d="M31 60 Q30 30 59 28 Q88 30 87 60 Q80 42 59 42 Q38 42 31 60 Z"/></g>
+            <g class="frisur" data-f="1"><path class="haar" d="M31 62 Q28 28 60 27 Q90 29 87 58 Q78 38 52 44 Q40 46 31 62 Z"/></g>
+            <g class="frisur" data-f="2"><path class="haar" d="M30 66 Q28 28 59 27 Q90 28 88 66 Q84 40 59 40 Q34 40 30 66 Z"/></g>
+            <g class="frisur" data-f="3"><path class="haar" d="M31 60 Q30 29 59 28 Q88 29 87 60 Q80 41 59 41 Q38 41 31 60 Z"/><path class="haar" d="M86 44 Q104 56 98 92 Q92 70 84 56 Z"/></g>
+            <g class="frisur" data-f="4"><circle class="haar" cx="40" cy="40" r="10"/><circle class="haar" cx="54" cy="33" r="10"/><circle class="haar" cx="68" cy="33" r="10"/><circle class="haar" cx="80" cy="41" r="10"/><circle class="haar" cx="33" cy="54" r="8"/><circle class="haar" cx="86" cy="54" r="8"/></g>
+            <g class="frisur" data-f="5"><circle class="haar" cx="38" cy="42" r="13"/><circle class="haar" cx="59" cy="32" r="14"/><circle class="haar" cx="80" cy="42" r="13"/></g>
+            <g class="frisur" data-f="7"><path class="haar" d="M31 70 Q29 54 36 48 L38 70 Z"/><path class="haar" d="M87 70 Q89 54 82 48 L80 70 Z"/></g>
+            <g id="pb-bart"><path class="haar" d="M38 78 Q40 104 59 106 Q78 104 80 78 Q72 92 59 92 Q46 92 38 78 Z"/></g>
+            <g id="pb-brille" fill="none" stroke="#2a2a2a" stroke-width="2.5"><rect x="38" y="60" width="17" height="11" rx="3"/><rect x="63" y="60" width="17" height="11" rx="3"/><path d="M55 65 H63"/></g>
+            <g fill="#2a2a2a"><circle cx="47" cy="66" r="2"/><circle cx="71" cy="66" r="2"/></g>
+            <path d="M51 86 Q59 90 67 86" stroke="#8a5a44" stroke-width="2" fill="none"/>
+          </svg>
+          <div class="ausweis-felder">
+            <span>Name<br><strong id="aw-a-name">–</strong></span>
+            <span>Vornamen<br><strong id="aw-a-vorname">–</strong></span>
+            <span class="paar"><span>Geburtstag<br><strong id="aw-a-geb">–</strong></span><span>Geburtsort<br><strong id="aw-a-ort">–</strong></span></span>
+            <span class="paar"><span>Staatsangehörigkeit<br><strong>DEUTSCH</strong></span><span>Gültig bis<br><strong>17.03.2015</strong></span></span>
+          </div>
+        </div>
+        <div class="ausweis-fuss">Rückseite: Anschrift AHORNWEG 7, 43999 MUSTERSTADT</div>
+      </div>
+      <p class="infokasten" id="aw-alter">Alter am 12.10.2009: –</p>
+      <p class="satire">Satire. Alle Personen, Orte und Behörden sind erfunden. Ihre Angaben bleiben auf Ihrem Gerät; im Aktenzeichen steht nur eine Prüfsumme. Fantasiedaten sind ausdrücklich zulässig.</p>
+    </div>
+    <form class="spalte-eingabe" id="aw-form" novalidate>
+      <div class="raster2">
+        <label>Familienname<input type="text" id="aw-name" maxlength="30" autocomplete="off" required></label>
+        <label>Vorname(n)<input type="text" id="aw-vorname" maxlength="30" autocomplete="off" required></label>
+        <label>Geburtsdatum<input type="text" id="aw-geb" maxlength="10" placeholder="TT.MM.JJJJ" autocomplete="off" required></label>
+        <label>Geburtsort<input type="text" id="aw-ort" maxlength="30" autocomplete="off" required></label>
+      </div>
+      <div id="aw-gestaltung">
+        <fieldset class="gruppe"><legend>Anrede</legend>
+          <label><input type="radio" name="aw-anrede" value="1"> Herr</label>
+          <label><input type="radio" name="aw-anrede" value="2"> Frau</label>
+          <label><input type="radio" name="aw-anrede" value="0" checked> ohne Anrede</label>
+        </fieldset>
+        <fieldset class="gruppe spalte"><legend>Passbild</legend>
+          <div class="zeile"><span class="etikett" id="aw-haut-etikett">Hautton</span><span id="aw-haut" role="radiogroup" aria-labelledby="aw-haut-etikett"></span></div>
+          <div class="zeile"><label for="aw-frisur" class="etikett">Frisur</label><select id="aw-frisur"><option value="0">kurz</option><option value="1">Seitenscheitel</option><option value="2">lang, offen</option><option value="3">Pferdeschwanz</option><option value="4">Locken</option><option value="5">Dauerwelle</option><option value="6">Glatze</option><option value="7">Halbglatze</option></select>
+            <label for="aw-haarfarbe">Haarfarbe</label><select id="aw-haarfarbe"><option value="0">braun</option><option value="1">schwarz</option><option value="2">blond</option><option value="3">rot</option><option value="4">grau</option><option value="5">weiß</option></select></div>
+          <div class="zeile"><label><input type="checkbox" id="aw-brille"> Brille</label><label><input type="checkbox" id="aw-bart"> Bart</label><button type="button" id="aw-zufall" class="knopf-hell">Zufall</button></div>
+        </fieldset>
+      </div>
+      <label class="einzeln"><input type="checkbox" id="aw-barrierearm"> Barrierearmer Modus</label>
+      <p class="meldung" id="aw-meldung" role="alert"></p>
+      <div class="knopfzeile">
+        <button type="submit" class="knopf-rot" id="aw-los">Vorgang eröffnen</button>
+        <button type="button" class="knopf-link" id="aw-zu-w">Ruhendes Verfahren wieder aufnehmen</button>
+        <button type="button" class="knopf-hell akte-einreichen">Akte einreichen …</button>
+        <button type="button" class="knopf-link" id="aw-neu" hidden>Neuen Vorgang eröffnen</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="schirm-w" class="schirm schirm-papier" role="dialog" aria-modal="true" aria-labelledby="w-titel" hidden>
+  <form class="vordruck" id="w-form" novalidate data-amtlich lang="de">
+    <div class="vordruck-kopf"><h1 id="w-titel">Antrag auf Wiederaufnahme eines ruhenden Verfahrens</h1><span>Vordruck W</span></div>
+    <label>1 Aktenzeichen<input type="text" id="w-az" autocomplete="off" spellcheck="false"></label>
+    <fieldset><legend>2 Angaben laut Personalausweis</legend>
+      <div class="raster2">
+        <label>Familienname<input type="text" id="w-name" maxlength="30" autocomplete="off"></label>
+        <label>Vorname(n)<input type="text" id="w-vorname" maxlength="30" autocomplete="off"></label>
+        <label>Geburtsdatum<input type="text" id="w-geb" maxlength="10" placeholder="TT.MM.JJJJ" autocomplete="off"></label>
+        <label>Geburtsort<input type="text" id="w-ort" maxlength="30" autocomplete="off"></label>
+      </div>
+    </fieldset>
+    <label class="grau">3 Nicht ausfüllen<input type="text" id="w-nicht" autocomplete="off"></label>
+    <p class="meldung" id="w-meldung" role="alert" data-ui></p>
+    <div class="knopfzeile" data-ui>
+      <button type="submit" class="knopf-rot">Antrag stellen</button>
+      <button type="button" class="knopf-hell akte-einreichen">Akte einreichen …</button>
+      <button type="button" class="knopf-link" id="w-zurueck">Neuen Vorgang eröffnen</button>
+    </div>
+  </form>
+</section>
+
+<section id="panel-unterlagen" class="panel" role="dialog" aria-modal="true" aria-labelledby="u-titel" hidden>
+  <div class="panel-kopf"><h2 id="u-titel">Meine Unterlagen</h2><button type="button" class="knopf-dunkel" id="u-zu">Schließen</button></div>
+  <div class="panel-spalten">
+    <div class="ablage">
+      <h3>Ablagefach</h3>
+      <ul id="u-ablage" class="ablage-liste"></ul>
+      <div class="notiz">
+        <label for="u-notiz">Notizzettel</label>
+        <textarea id="u-notiz" rows="4" spellcheck="false"></textarea>
+        <span class="klein">Gilt nur bis zum Neuladen, es sei denn, die Akte wird heruntergeladen.</span>
+      </div>
+    </div>
+    <div class="laufzettel">
+      <div class="lz-kopf"><strong>Laufzettel</strong><span>Vordruck L</span></div>
+      <span>Anliegen: Negativattest</span>
+      <span id="u-eroeffnet">Eröffnet: Mo, 12.10.2009, 7:30 Uhr</span>
+      <div class="az-kasten"><span class="klein">Aktenzeichen</span><strong id="u-az"></strong></div>
+      <div class="knopfzeile">
+        <button type="button" class="knopf-hell" id="u-kopieren">Aktenzeichen kopieren</button>
+        <button type="button" class="knopf-hell" id="u-download">Akte herunterladen (.txt)</button>
+      </div>
+      <p id="u-kopiert" class="klein" role="status"></p>
+      <p class="klein">Das Aktenzeichen steht auch in der Adresszeile. Ein Lesezeichen genügt, um das Verfahren später fortzusetzen.</p>
+      <p class="sprachwahl"><label><input type="checkbox" id="u-englisch"> <span lang="en">English</span></label></p>
+    </div>
+  </div>
+</section>
+
+<section id="schirm-stempel" class="schirm schirm-dunkel" role="dialog" aria-modal="true" aria-labelledby="st-text" hidden>
+  <div class="stempel" id="st-text" data-amtlich lang="de">Das ruhende Verfahren wird wieder aufgenommen<span>Stadt Musterstadt · Bürgeramt</span></div>
+  <button type="button" class="knopf-rot" id="st-weiter">Weiter</button>
+</section>
+
+<section id="schirm-tagesende" class="schirm schirm-dunkel" role="dialog" aria-modal="true" aria-labelledby="te-titel" hidden>
+  <div class="karte-hell">
+    <p class="klein" id="te-kopf"></p>
+    <h1 id="te-titel"></h1>
+    <p id="te-text"></p>
+    <div class="az-kasten"><span class="klein">Aktenzeichen, Stand Tagesende</span><strong id="te-az"></strong></div>
+    <p id="te-weiter-text"></p>
+    <div class="knopfzeile"><button type="button" class="knopf-blau" id="te-weiter">Nächster Öffnungstag</button><button type="button" class="knopf-hell" id="te-download">Akte herunterladen (.txt)</button></div>
+  </div>
+</section>
+
+<section id="panel-schreiben" class="panel panel-holz" role="dialog" aria-modal="true" aria-labelledby="sb-betreff" hidden>
+  <div class="panel-kopf"><h2>Küchentisch</h2><button type="button" class="knopf-dunkel" id="sb-zu">Zurück an den Rechner</button></div>
+  <div class="brief-buehne">
+    <article class="brief" tabindex="0" data-amtlich lang="de">
+      <div class="brief-kopf">
+        <div><strong>Stadt Musterstadt</strong><br>Der Bürgermeister · Ordnungsamt</div>
+        <div class="brief-rechts">Sachbearbeitung: Herr Schwamborn<br>Raum 121 · Telefon (0 12 34) 5 67-3 22<br>Datum: 09.10.2009</div>
+      </div>
+      <p class="ruecksende">Stadt Musterstadt · Rathausplatz 1 · 43999 Musterstadt</p>
+      <p class="anschrift"><span id="sb-anrede"></span><span id="sb-name"></span><br>Ahornweg 7<br>43999 Musterstadt</p>
+      <h3 id="sb-betreff">Sondernutzung öffentlicher Verkehrsflächen; hier: Fußabtreter vor Ihrem Hauseingang</h3>
+      <p>Sehr geehrte Damen und Herren,</p>
+      <p>bei einer Kontrolle durch den Kommunalen Ordnungsdienst am 07.10.2009 wurde festgestellt, dass der vor Ihrem Hauseingang ausgelegte Fußabtreter um ca. 4 cm in die öffentliche Gehwegfläche hineinragt.</p>
+      <p>Ob es sich hierbei um eine erlaubnispflichtige Sondernutzung im Sinne des § 1 Abs. 1 der Satzung über Sondernutzungen an öffentlichen Straßen der Stadt Musterstadt vom 21.03.2006 handelt, kann derzeit nicht abschließend beurteilt werden. Die Restgehwegbreite nach § 3 der Satzung ist nach den getroffenen Feststellungen nicht unterschritten.</p>
+      <p>Ich bitte Sie daher, bis auf Weiteres ein Negativattest der Stadt Musterstadt (Bürgeramt) vorzulegen, aus dem sich ergibt, dass eine Erlaubnis nicht erforderlich ist. Bis zur Vorlage wird von weiteren Maßnahmen abgesehen.</p>
+      <p>Dieses Schreiben ist kein Bescheid.</p>
+      <p>Mit freundlichen Grüßen<br>Im Auftrag</p>
+      <svg class="unterschrift" viewBox="0 0 160 44" width="160" height="44" role="img" aria-label="Unterschrift: Schwamborn"><path d="M6 30 C10 12 22 10 20 22 C18 32 8 34 12 26 C16 20 26 28 30 24 C34 20 36 30 40 26 C44 22 46 30 50 25 C54 20 56 32 60 26 Q64 18 66 28 C68 34 72 20 76 24 C80 28 82 22 86 26 C90 30 94 18 98 24 C102 30 108 26 114 24 C126 20 140 22 154 18" fill="none" stroke="#1d2f8f" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <p class="name-unter">Schwamborn</p>
+    </article>
+  </div>
+</section>
+
+<section id="panel-ansicht" class="panel" role="dialog" aria-modal="true" aria-labelledby="an-titel" hidden>
+  <div class="panel-kopf"><h2 id="an-titel">Ausdruck</h2><button type="button" class="knopf-dunkel" id="an-zu">Zurück</button></div>
+  <div class="ansicht-buehne"><iframe id="an-rahmen" title="Ausdruck" hidden></iframe><div id="an-text" class="blatt" tabindex="0" hidden data-amtlich lang="de"></div></div>
+</section>
+
+<div id="dialog-drucken" class="dialog dialog-breit" role="dialog" aria-modal="true" aria-labelledby="dr-titel" hidden>
+  <div class="titelleiste"><span class="titel" id="dr-titel">Drucken</span></div>
+  <form class="dialog-inhalt" id="dr-form">
+    <p class="zeile2"><label for="dr-drucker">Drucker</label><select id="dr-drucker"><option>Tintenstrahldrucker TS 640 (USB)</option></select></p>
+    <p class="zeile2"><span>Dokument</span><span><strong id="dr-dokument"></strong> · <span id="dr-seitenzahl"></span></span></p>
+    <fieldset class="seitenbereich"><legend>Seitenbereich</legend>
+      <label><input type="radio" name="dr-bereich" value="alle" checked> Alle</label>
+      <label><input type="radio" name="dr-bereich" value="seiten"> Seiten</label>
+      <input type="text" id="dr-seiten" aria-label="Seiten, zum Beispiel 1-3 oder 5" placeholder="z. B. 1-3, 5">
+    </fieldset>
+    <p class="zeile2"><span>Druckdauer</span><span id="dr-dauer"></span></p>
+    <p class="zeile2"><span>Patrone</span><span id="dr-patrone"></span></p>
+    <p class="meldung" id="dr-meldung" role="alert"></p>
+    <p class="rechts"><button type="submit" class="dialog-ok" id="dr-los">Drucken</button> <button type="button" class="dialog-ok dialog-abbrechen" id="dr-abbrechen">Abbrechen</button></p>
+  </form>
+</div>
+
+<section id="rathaus" class="rathaus" aria-labelledby="rh-ort" hidden>
+  <div class="rh-szene">
+    <h2 id="rh-ort" class="unsichtbar"></h2>
+    <div id="rh-bild" class="rh-bild" role="img" aria-label=""></div>
+    <p id="rh-gespraech" class="rh-gespraech" aria-live="polite"></p>
+  </div>
+  <div class="rh-seite">
+    <h3 id="rh-frage">Was tun Sie?</h3>
+    <div id="rh-aktionen" class="rh-aktionen"></div>
+    <div class="rh-ansagen" aria-live="polite" aria-relevant="additions"><span class="klein-hell">Ansagen</span><ol id="rh-log"></ol></div>
+  </div>
+</section>
+
+<section id="panel-formular" class="panel panel-holz" role="dialog" aria-modal="true" aria-labelledby="fo-titel" hidden>
+  <div class="panel-kopf"><h2 id="fo-ort">Formular</h2><button type="button" class="knopf-dunkel" id="fo-zu">Formular einstecken</button></div>
+  <div class="fo-spalten">
+    <form id="fo-blatt" class="fo-blatt" novalidate data-amtlich lang="de">
+      <div class="vordruck-kopf"><h3 id="fo-titel"></h3><span id="fo-vordruck"></span></div>
+      <p id="fo-hinweis" class="fo-hinweis"></p>
+      <div id="fo-felder"></div>
+    </form>
+    <div class="fo-seite">
+      <fieldset id="fo-stiftwahl" class="gruppe spalte"><legend>Womit schreiben Sie?</legend>
+        <label><input type="radio" name="fo-stift" value="blau"> Kugelschreiber an der Kette (blau)</label>
+        <label><input type="radio" name="fo-stift" value="schwarz"> eigener Kugelschreiber (schwarz)</label>
+      </fieldset>
+      <p id="fo-stift-fest" class="klein-hell"></p>
+      <div id="fo-daneben" class="fo-daneben"></div>
+      <p class="klein-hell">Was einmal eingetragen ist, lässt sich nicht mehr ändern.</p>
+      <p class="meldung" id="fo-meldung" role="alert"></p>
+    </div>
+  </div>
+</section>
+
+<div id="dialog-termin" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dt-titel" hidden>
+  <div class="titelleiste"><span class="titel" id="dt-titel">Wartemarke mit Termin</span></div>
+  <form class="dialog-inhalt" id="dt-form">
+    <p><label for="dt-nummer">Bitte geben Sie Ihre Buchungsnummer ein.</label></p>
+    <p><input type="text" id="dt-nummer" autocomplete="off" spellcheck="false" style="width:100%;font-family:'Courier New',monospace;font-size:14px"></p>
+    <p class="meldung" id="dt-meldung" role="alert"></p>
+    <p class="rechts"><button type="submit" class="dialog-ok">OK</button> <button type="button" class="dialog-ok" id="dt-abbrechen">Abbrechen</button></p>
+  </form>
+</div>
+
+<div id="dialog-warten" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dw-titel" hidden>
+  <div class="titelleiste"><span class="titel" id="dw-titel">Warten</span></div>
+  <form class="dialog-inhalt" id="dw-form">
+    <p><label for="dw-bis">Bis wann?</label> <select id="dw-bis"></select></p>
+    <p class="rechts"><button type="submit" class="dialog-ok">OK</button> <button type="button" class="dialog-ok" id="dw-abbrechen">Abbrechen</button></p>
+  </form>
+</div>
+
+<section id="schirm-epilog" class="schirm schirm-holz" role="dialog" aria-modal="true" aria-labelledby="ep-kopf" hidden>
+  <p class="ep-kopf" id="ep-kopf"></p>
+  <article class="brief brief-mittel" tabindex="0" data-amtlich lang="de">
+    <div class="brief-kopf">
+      <div><strong>Stadt Musterstadt</strong><br>Der Bürgermeister · Ordnungsamt</div>
+      <div class="brief-rechts">Sachbearbeitung: Herr Schwamborn<br>Raum 121 · Telefon (0 12 34) 5 67-3 22<br>Datum: <span id="ep-datum"></span></div>
+    </div>
+    <p class="ruecksende">Stadt Musterstadt · Rathausplatz 1 · 43999 Musterstadt</p>
+    <p class="anschrift"><span id="ep-anschrift"></span><br>Ahornweg 7<br>43999 Musterstadt</p>
+    <h3>Sondernutzung öffentlicher Verkehrsflächen; hier: Fußabtreter vor Ihrem Hauseingang</h3>
+    <p>Sehr geehrte Damen und Herren,</p>
+    <p>Ihr Schreiben vom <span id="ep-abgabe"></span> wurde zu den Akten genommen. Eine Vorlage war nicht erforderlich.</p>
+    <p>Mit freundlichen Grüßen<br>Im Auftrag</p>
+    <svg class="unterschrift" viewBox="0 0 160 44" width="160" height="44" role="img" aria-label="Unterschrift: Schwamborn"><path d="M6 30 C10 12 22 10 20 22 C18 32 8 34 12 26 C16 20 26 28 30 24 C34 20 36 30 40 26 C44 22 46 30 50 25 C54 20 56 32 60 26 Q64 18 66 28 C68 34 72 20 76 24 C80 28 82 22 86 26 C90 30 94 18 98 24 C102 30 108 26 114 24 C126 20 140 22 154 18" fill="none" stroke="#1d2f8f" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <p class="name-unter">Schwamborn</p>
+  </article>
+  <button type="button" class="knopf-rot" id="ep-weiter">Zum Abschluss-Bescheid</button>
+</section>
+
+<section id="schirm-abschluss" class="schirm schirm-papier" role="dialog" aria-modal="true" aria-labelledby="ab-titel" hidden>
+  <div class="bescheid-blatt">
+    <div id="ab-bescheid" data-amtlich lang="de"></div>
+    <div class="link-kasten">
+      <label for="ab-link">Link zum Bescheid</label>
+      <input type="text" id="ab-link" readonly>
+      <button type="button" class="knopf-hell" id="ab-kopieren">Kopieren</button>
+    </div>
+    <p id="ab-kopiert" class="klein" role="status"></p>
+    <div class="knopfzeile"><button type="button" class="knopf-hell" id="ab-download">Akte herunterladen (.txt)</button><button type="button" class="knopf-link" id="ab-neu">Neuen Vorgang eröffnen</button></div>
+  </div>
+</section>
+
+<input type="file" id="akte-datei" accept=".txt,text/plain" hidden>
+
+</div>
+</div>
+
+<main id="bescheid-seite" class="bescheid-seite" hidden data-amtlich lang="de">
+  <div class="bescheid-blatt">
+    <div id="bs-bescheid"></div>
+    <p><a href="./">Selbst einen Antrag stellen</a></p>
+  </div>
+</main>
+
+<div id="telefonhinweis" data-amtlich role="dialog" aria-modal="true" aria-labelledby="telefonhinweis-titel" hidden>
+  <div class="karte">
+    <p class="kopf">Stadt Musterstadt · Bürgeramt</p>
+    <h1 id="telefonhinweis-titel">Dieses Verfahren ist am Rechner durchzuführen. <span lang="en" class="zweitsprache">This procedure is to be carried out at a computer.</span></h1>
+    <p>Dokumente werden auf diesem Gerät in einem neuen Fenster geöffnet. <span lang="en" class="zweitsprache">On this device, documents open in a new window.</span></p>
+    <button type="button" id="telefon-weiter">Trotzdem fortfahren <span lang="en">· Continue anyway</span></button>
+  </div>
+</div>
+
+<script src="js/sprache.js"></script>
+<script src="js/rahmen.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/start.js"></script>
+<script src="js/unterlagen.js"></script>
+<script src="js/zuhause.js"></script>
+<script src="js/formulare.js"></script>
+<script src="js/rathaus.js"></script>
+<script src="js/ende.js"></script>
+</body>
+</html>
